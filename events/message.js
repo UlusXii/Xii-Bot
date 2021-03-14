@@ -1,3 +1,4 @@
+
 const ayarlar = require('../ayarlar.json');
 
 module.exports = message => {
@@ -8,8 +9,8 @@ module.exports = message => {
   let user = message.author
   let kayitsorgu =  db.fetch(`${user.id}.kayit`)
   if(!kayitsorgu) return message.channel.send(`${user}, `+"Bu komutu kullanabilmek için **kayıt olmalısın**. `.kayit` ")
-  let command = message.content.split(' ')[0].slice(ayarlar.prefix.length);
-  let params = message.content.split(' ').slice(1);
+  let command = message.content.toUpperCase().split(' ')[0].slice(ayarlar.prefix.length);
+  let params = message.content.toLowerCase().split(' ').slice(1);
 
   let cmd; 
   if (client.commands.has(command)) {
@@ -36,8 +37,8 @@ module.exports = async message => {
   let user = message.author
   let kayitsorgu =  db.fetch(`${user.id}.kayit`)
   if(!kayitsorgu) return message.channel.send(`${user}, `+"Bu komutu kullanabilmek için **kayıt olmalısın**. `.kayit` ")
-  let command = message.content.split(' ')[0].slice(prefix.length)
-  let params = message.content.split(' ').slice(1)
+  let command = message.content.toLowerCase().split(' ')[0].slice(prefix.length)
+  let params = message.content.toLowerCase().split(' ').slice(1)
   
   let cmd;
   if (client.commands.has(command)) cmd = client.commands.get(command);

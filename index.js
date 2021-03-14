@@ -87,6 +87,7 @@ const log = message => {
       }
     });
   };
+ 
 
   client.on("message", async message => {
     if(message.author.bot) return;
@@ -115,8 +116,9 @@ client.on('ready', () => {
   let c = db.all();
   console.log(c);
   console.log(`serving ${client.users.size} users on ${client.guilds.size} servers.`)
- 
-  client.user.setStatus('idle',`${client.users.size} kişi ile birlikteyiz 🎈` ) 
+ let usesayisi = db.fetch(`uyesayisi`)
+  client.user.setStatus('dnd') 
+  client.user.setGame(`${usesayisi} kişi ile birlikteyiz 🎈` )
 
 });
 client.on('message', message => {
@@ -130,6 +132,7 @@ if(kayit != 1){
 
     let currentdate = `${date} ` + `${time}`
   if(message.author.bot) return;
+  db.add(`uyesayisi`,1)
   db.set(`${user.id}.kayit`, 1)
   db.set(`${user.id}.money`, 100);
   db.set(`${user.id}.meslek`, null)

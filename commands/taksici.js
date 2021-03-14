@@ -10,7 +10,8 @@ exports.run = async (client, message, args) => {
  let meslek = db.fetch(`${user.id}.meslek`)
  let timeout = 300000;
  let taksi = await db.fetch(`${user.id}.taksi`);
- let gidilenyol = args[0] 
+ let gidilenyol1 = args[0]
+ let gidilenyol = gidilenyol1.toLowerCase()
  let songidilensehir = db.fetch(`${user.id}.sonsehir`)
  
  let sontaksi = await db.fetch(`${user.id}.lasttaksi`)
@@ -30,7 +31,7 @@ exports.run = async (client, message, args) => {
  
  else if(gidilenyol){
    
-   if(gidilenyol == "Ankara")
+   if(gidilenyol == "ankara")
    {
     
     let loot = [
@@ -52,7 +53,7 @@ exports.run = async (client, message, args) => {
       db.set(`${user.id}.taksi`, Date.now())
       db.set(`${user.id}.sonsehir`, gidilenyol)
   }
-  if(gidilenyol == "İstanbul")
+  if(gidilenyol == "istanbul")
    {
 
     let loot = [
@@ -74,7 +75,7 @@ exports.run = async (client, message, args) => {
       db.set(`${user.id}.sonsehir`, gidilenyol)
    
   }
-  if(gidilenyol == "İzmir")
+  if(gidilenyol == "izmir")
    {
 
     let loot = [

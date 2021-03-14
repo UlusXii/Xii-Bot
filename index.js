@@ -114,6 +114,10 @@ const log = message => {
 client.on('ready', () => {
   let c = db.all();
   console.log(c);
+  console.log(`serving ${client.users.size} users on ${client.guilds.size} servers.`)
+ 
+  client.user.setStatus('idle',`${client.users.size} kişi ile birlikteyiz 🎈` ) 
+
 });
 client.on('message', message => {
   
